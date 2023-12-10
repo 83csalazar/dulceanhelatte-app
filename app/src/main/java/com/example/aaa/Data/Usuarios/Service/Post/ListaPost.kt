@@ -1,9 +1,9 @@
-package com.example.aaa.Data.Model
-data class Lista(
+package com.example.aaa.Data.Usuarios.Service.Post
 
-    val Id_Usuario: Int,
+data class ListaPost (
     val Nombre: String,
     val Rut: Int,
     val DigVerificador: Int,
     val TipoUsuario: Int
+
 )

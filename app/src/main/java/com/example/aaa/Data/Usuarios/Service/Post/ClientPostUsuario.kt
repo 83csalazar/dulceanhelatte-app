@@ -1,4 +1,4 @@
-package com.example.aaa.Data.Service.Post
+package com.example.aaa.Data.Usuarios.Service.Post
 
 import com.example.myapplication.Data.Service.AllUsuarios.PostUsuario
 

@@ -1,6 +1,6 @@
 package com.example.myapplication.Data.Service.AllUsuarios
 
-import com.example.aaa.Data.Service.Post.ListaPost
+import com.example.aaa.Data.Usuarios.Service.Post.ListaPost
 import retrofit2.http.Body
 import retrofit2.http.POST
 

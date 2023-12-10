@@ -1,4 +1,4 @@
-package com.example.aaa.Data.Service.ById
+package com.example.aaa.Data.Usuarios.Service.Get.ById
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

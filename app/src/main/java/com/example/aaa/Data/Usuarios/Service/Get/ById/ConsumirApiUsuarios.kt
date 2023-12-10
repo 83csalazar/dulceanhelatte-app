@@ -1,6 +1,6 @@
-package com.example.aaa.Data.Service.ById
+package com.example.aaa.Data.Usuarios.Service.Get.ById
 
-import com.example.aaa.Data.Model.RemoteResultUsuarios
+import com.example.aaa.Data.Usuarios.Service.Get.Model.RemoteResultUsuarios
 import retrofit2.http.GET
 import retrofit2.http.Query
 
