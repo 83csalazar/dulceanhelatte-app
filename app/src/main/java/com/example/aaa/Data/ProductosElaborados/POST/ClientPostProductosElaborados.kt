@@ -11,8 +11,8 @@ class ClientPostProductosElaborados {
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(PostProductoElaborado::class.java)
     }
-    suspend fun createProductoElaborado(nuevoProductoElaborado: ListaPostProductosElaborados){
+    suspend fun createProductoElaborado(nuevoProductosElaborados: ListaPostProductosElaborados){
         val service= makePostProductosElaborados()
-        return service.createProductoElaborado(nuevoProductoElaborado)
+        return service.createProductoElaborado(nuevoProductosElaborados)
     }
 }
