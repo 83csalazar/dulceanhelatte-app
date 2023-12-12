@@ -15,8 +15,8 @@
         android:layout_weight="3"
         android:background="@color/grey"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/parte2">
+        app:layout_constraintBottom_toTopOf="@id/parte2"
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- ImageView para el logo de la empresa -->
         <ImageView
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Título"
+            android:text="Usuarios"
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
@@ -62,58 +62,87 @@
         <!-- Imagen botón pequeño en la parte superior derecha -->
     </LinearLayout>
 
-    <!-- Parte 2 - 50% de la pantalla con fondo verde y tabla de ingredientes -->
-    <LinearLayout
-        android:id="@+id/parte2"
+
+
+
+
+    >
+
+    <!-- RecyclerView para mostrar la tabla de ingredientes -->
+
+    <!-- TextViews -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewIngredientes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
-        android:background="#464946"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/parte1"
-        app:layout_constraintBottom_toTopOf="@id/parte3">
+        android:layout_weight="1"
+        android:padding="16dp"
+        android:scrollbars="vertical"
+        android:background="@color/white"
 
-        <!-- RecyclerView para mostrar la tabla de ingredientes -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewIngredientes"
-            android:layout_width="match_parent"
-            android:layout_height="141dp"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:padding="16dp" />
-        <!-- Botones para manipular la tabla -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        app:layout_constraintBottom_toTopOf="@id/parte3usuarios"
+        app:layout_constraintTop_toBottomOf="@id/parte1"/>
 
-            <ImageButton
-                android:id="@+id/botonAgregar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/btnagregar" />
+    <TextView
+        android:id="@+id/nombreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-            <ImageButton
-                android:id="@+id/botonEliminar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/btntrash" />
+    <TextView
+        android:id="@+id/rutTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
 
-            <ImageButton
-                android:id="@+id/botonModificar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/btneditar" />
+    <TextView
+        android:id="@+id/digVerificadorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
 
-        </LinearLayout>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tipoUsuarioTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
+
 
     <!-- Parte 3 - 20% de la pantalla con fondo gris y un botón en el centro -->
     <LinearLayout
-        android:id="@+id/parte3"
+        android:id="@+id/parte3usuarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/parte4usuarios"
+        app:layout_constraintTop_toBottomOf="@id/parte2">
+
+        <ImageButton
+            android:id="@+id/botonAgregar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/btnagregar" />
+
+        <ImageButton
+            android:id="@+id/botonEliminar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/btntrash" />
+
+        <ImageButton
+            android:id="@+id/botonModificar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/btneditar" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/parte4usuarios"
         android:layout_width="413dp"
         android:layout_height="156dp"
         android:layout_weight="2"
@@ -121,6 +150,8 @@
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/parte2"
+        app:layout_constraintVertical_bias="0.986"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-2dp">
 
         <!-- Botón en el centro -->
