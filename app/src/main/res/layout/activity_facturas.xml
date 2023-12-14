@@ -9,87 +9,101 @@
 
 
 
-
-
-    <!-- Parte 1 - 30% de la pantalla con fondo negro -->
     <LinearLayout
         android:id="@+id/parte1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
-        android:background="@color/grey"
-        android:orientation="vertical"
+        app:layout_constraintHeight_percent="0.3"
+        android:background="@color/griscalido"
+        android:padding="20dp"
+        android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/parte2">
 
         <!-- ImageView para el logo de la empresa -->
-        <ImageView
-            android:id="@+id/id_notificaciones"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/campanaencendida"
-            tools:srcCompat="@drawable/campanaencendida" />
 
+
+        <!-- Título y subtitulo -->
         <ImageView
             android:id="@+id/id_Logo"
-            android:layout_width="143dp"
-            android:layout_height="112dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/logo" />
 
-        <!-- Título y subtitulo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="fill_horizontal">
 
-        <TextView
-            android:id="@+id/id_Titulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Factras"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp" />
+            <ImageView
+                android:id="@+id/id_notificaciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@drawable/campanaencendida"
+                tools:srcCompat="@drawable/campanaencendida" />
 
-        <TextView
-            android:id="@+id/id_Subtítulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Subtítulo"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="bottom">
 
-        <!-- Imagen botón pequeño en la parte superior derecha -->
+                <TextView
+                    android:id="@+id/id_Titulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Facturas"
+                    android:textAlignment="textEnd"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/id_Subtítulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:text="Ingresa tus compras"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
     </LinearLayout>
+
 
     <!-- Parte 2 - 50% de la pantalla con fondo verde y elementos para boleta/factura -->
     <LinearLayout
         android:id="@+id/parte2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
-        android:background="#B2FFFFFF"
+        android:padding="30dp"
+        android:background="@color/white"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/parte1"
         app:layout_constraintBottom_toTopOf="@id/parte3">
 
-        <!-- Spinner para seleccionar boleta o factura -->
+
         <Spinner
             android:id="@+id/spinnerTipoDocumento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"/>
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:padding="10dp" />
 
         <!-- Cuadro para ingresar la fecha -->
         <EditText
             android:id="@+id/editTextFecha"
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -100,6 +114,7 @@
         <!-- ASASASASASCuadro para ingresar el monto -->
         <EditText
             android:id="@+id/editTextMonto"
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -110,32 +125,38 @@
         <!-- Botón para imprimir -->
         <Button
             android:id="@+id/botonImprimir"
+            android:padding="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Imprimir"/>
+            android:backgroundTint= "@color/naranjo"
+            android:text="Ingresar"/>
     </LinearLayout>
 
     <!-- Parte 3 - 20% de la pantalla con fondo gris y un botón en el centro -->
     <LinearLayout
         android:id="@+id/parte3"
-        android:layout_width="413dp"
-        android:layout_height="156dp"
-        android:layout_weight="2"
-        android:background="@color/orange"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.2"
+        android:background="#E67A00"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/parte2"
-        tools:layout_editor_absoluteX="-2dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/parte2">
 
         <!-- Botón en el centro -->
         <!-- Ajusta el recurso según tus necesidades -->
         <ImageButton
             android:id="@+id/buttonHome"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
             android:scaleType="fitCenter"
             android:src="@drawable/btnhome"
             tools:srcCompat="@drawable/btnhome" />

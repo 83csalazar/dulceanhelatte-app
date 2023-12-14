@@ -4,4 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#E67A00</color>
     <color name="grey">#502d16</color>
+    <color name="naranjoclaro">#FFA540</color>
+    <color name="naranjo">#E67A00</color>
+    <color name="griscalido">#6E645B</color>
 </resources>

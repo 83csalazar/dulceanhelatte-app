@@ -1,65 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/logoImageView"
-        android:layout_width="410dp"
-        android:layout_height="729dp"
-        android:src="@drawable/fondo1"
-        tools:ignore="MissingConstraints" /> <!-- Reemplaza con tu recurso de imagen -->
-
-    <EditText
-        android:id="@+id/usernameEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Usuario"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/usernameEditText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:inputType="textPassword"
-        android:hint="Contraseña"/>
-
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="351dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="16dp"
-        android:text="Ingresar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
-
-    <Button
-        android:id="@+id/exitButton"
-        android:layout_width="337dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="8dp"
-        android:text="Salir"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="195dp"
-        android:layout_height="198dp"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:id="@+id/fondo1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        android:scaleType="matrix"
+        app:srcCompat="@drawable/fondo1" />
+
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="60dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/logo"
+            android:layout_gravity="top"/>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            app:cardBackgroundColor="#80FFFFFF"
+            android:layout_marginBottommar="20dp"
+            app:cardCornerRadius="@dimen/esquina_redonda2">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text">
+            </com.google.android.material.textfield.TextInputEditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            app:cardBackgroundColor="#80FFFFFF"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="@dimen/esquina_redonda2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                >
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </androidx.cardview.widget.CardView>
+
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:text="ingresar"
+            android:backgroundTint= "@color/naranjo"
+            app:cornerRadius="@dimen/esquina_redonda2" />
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
