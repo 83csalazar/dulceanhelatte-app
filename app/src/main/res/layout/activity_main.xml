@@ -51,13 +51,13 @@
             android:layout_height="50dp"
             android:background="@color/white"
             app:cardBackgroundColor="#80FFFFFF"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottommar="20dp"
             app:cardCornerRadius="@dimen/esquina_redonda2">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/usernameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textPassword">
+                android:inputType="text">
             </com.google.android.material.textfield.TextInputEditText>
         </androidx.cardview.widget.CardView>
 

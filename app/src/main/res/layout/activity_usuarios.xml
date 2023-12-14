@@ -12,63 +12,72 @@
         android:id="@+id/parte1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
-        android:background="@color/grey"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/parte2"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintHeight_percent="0.3"
+        android:background="@color/griscalido"
+        android:padding="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recyclerViewUsuarios">
 
         <!-- ImageView para el logo de la empresa -->
-        <ImageView
-            android:id="@+id/id_notificaciones"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/campanaencendida"
-            tools:srcCompat="@drawable/campanaencendida" />
 
+
+        <!-- Título y subtitulo -->
         <ImageView
             android:id="@+id/id_Logo"
-            android:layout_width="143dp"
-            android:layout_height="112dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/logo" />
 
-        <!-- Título y subtitulo -->
-        <TextView
-            android:id="@+id/id_Titulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Usuarios"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="fill_horizontal">
 
-        <TextView
-            android:id="@+id/id_Subtítulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Lista de Usuarios"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            <ImageView
+                android:id="@+id/id_notificaciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@drawable/campanaencendida"
+                tools:srcCompat="@drawable/campanaencendida" />
 
-        <!-- Imagen botón pequeño en la parte superior derecha -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="bottom">
+
+                <TextView
+                    android:id="@+id/id_Titulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Usuarios"
+                    android:textAlignment="textEnd"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/id_Subtítulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:text=""
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
     </LinearLayout>
 
-
-
-
-
->
-
-        <!-- RecyclerView para mostrar la tabla de ingredientes -->
+    >
 
         <!-- TextViews -->
         <androidx.recyclerview.widget.RecyclerView
@@ -88,25 +97,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/rutTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/digVerificadorTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/tipoUsuarioTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints" />
 
 
     <!-- Parte 3 - 20% de la pantalla con fondo gris y un botón en el centro -->
@@ -115,14 +128,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@id/parte4usuarios"
-        app:layout_constraintTop_toBottomOf="@id/parte2">
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewUsuarios">
 
         <ImageButton
             android:id="@+id/botonAgregar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#00FFFFFF"
             android:src="@drawable/btnagregar" />
 
         <ImageButton
@@ -130,6 +145,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#00FFFFFF"
             android:src="@drawable/btntrash" />
 
         <ImageButton
@@ -137,29 +153,30 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#00FFFFFF"
             android:src="@drawable/btneditar" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/parte4usuarios"
-        android:layout_width="413dp"
-        android:layout_height="156dp"
-        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.2"
         android:background="@color/orange"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/parte2"
-        app:layout_constraintVertical_bias="0.986"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-2dp">
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewInventario"
+        tools:ignore="NotSibling">
 
         <!-- Botón en el centro -->
         <!-- Ajusta el recurso según tus necesidades -->
         <ImageButton
             android:id="@+id/buttonHome"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
             android:scaleType="fitCenter"
             android:src="@drawable/btnhome"
             tools:srcCompat="@drawable/btnhome" />
