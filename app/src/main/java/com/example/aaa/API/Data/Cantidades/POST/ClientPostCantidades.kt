@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ClientPostCantidades {
     fun makePostCantidades():PostCantidades{
         return Retrofit.Builder()
-            .baseUrl("https://noha.cl/app/")
+            .baseUrl("http://10.0.2.2:3000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(PostCantidades::class.java)
     }

@@ -32,7 +32,7 @@ class MenuPrincipal : AppCompatActivity() {
         // Configurar OnClickListener para el botón de factura
         button1.setOnClickListener {
             // Crear un Intent para iniciar la actividad Facturas
-            val intent = Intent(this, Facturas::class.java)
+            val intent = Intent(this, IngredientesAgregar::class.java)
             startActivity(intent)
         }
 

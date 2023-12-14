@@ -1,0 +1,8 @@
+<resources>
+    <string-array name="nombre_array">
+        <item>Nombre 1</item>
+        <item>Nombre 2</item>
+        <item>Nombre 3</item>
+        <!-- Agrega más elementos según sea necesario -->
+    </string-array>
+</resources>

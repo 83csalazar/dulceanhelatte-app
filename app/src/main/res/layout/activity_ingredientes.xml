@@ -41,7 +41,7 @@
 
         <!-- Título y subtitulo -->
         <TextView
-            android:id="@+id/id_Titulo"
+            android:id="@+id/IngredienteS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -72,7 +72,7 @@
 
     <!-- TextViews -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewIngredientes"
+        android:id="@+id/recyclerViewMateriasPrimas"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -84,29 +84,23 @@
         app:layout_constraintTop_toBottomOf="@id/parte1"/>
 
     <TextView
-        android:id="@+id/nombreTextView"
+        android:id="@+id/nombreUnidadTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/existenciaTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/nombreIngredienteBodegaTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/rutTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/digVerificadorTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/tipoUsuarioTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp" />
 
 
     <!-- Parte 3 - 20% de la pantalla con fondo gris y un botón en el centro -->
@@ -116,7 +110,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/parte4usuarios"
-        app:layout_constraintTop_toBottomOf="@id/parte2">
+     >
 
         <ImageButton
             android:id="@+id/botonAgregar"
@@ -149,7 +143,7 @@
         android:background="@color/orange"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/parte2"
+
         app:layout_constraintVertical_bias="0.986"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-2dp">

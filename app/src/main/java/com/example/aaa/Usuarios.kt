@@ -32,7 +32,23 @@ class Usuarios : AppCompatActivity() {
         val btnhome = findViewById<View>(R.id.buttonHome)
         val smallButtonImageView = findViewById<ImageView>(R.id.id_notificaciones)
 
+        val serviceAllUsuarios = ClientAllUsuariosFactory.makeClienteAllUsuarios()
+        val activityContext = this
+        lifecycleScope.launch {
+            try {
+                val consultaAllUsers = serviceAllUsuarios.listAllUsuarios()
+                val listaUsuarios: List<Lista> = consultaAllUsers.lista
 
+                recyclerView = findViewById(R.id.recyclerViewUsuarios)
+                recyclerView.layoutManager = LinearLayoutManager(activityContext)
+                usuarioAdapter = UsuarioAdapter(listaUsuarios)
+                recyclerView.adapter = usuarioAdapter
+                println(listaUsuarios)
+            } catch (e: Exception) {
+                // Manejar errores
+                e.printStackTrace()
+            }
+        }
 
         // Configura el botón Agregar
         botonAgregar.setOnClickListener {
@@ -54,23 +70,7 @@ class Usuarios : AppCompatActivity() {
 
         // Configura el botón Modificar
         botonModificar.setOnClickListener {
-            val serviceAllUsuarios = ClientAllUsuariosFactory.makeClienteAllUsuarios()
-            val activityContext = this
-            lifecycleScope.launch {
-                try {
-                    val consultaAllUsers = serviceAllUsuarios.listAllUsuarios()
-                    val listaUsuarios: List<Lista> = consultaAllUsers.lista
 
-                    recyclerView = findViewById(R.id.recyclerViewUsuarios)
-                    recyclerView.layoutManager = LinearLayoutManager(activityContext)
-                    usuarioAdapter = UsuarioAdapter(listaUsuarios)
-                    recyclerView.adapter = usuarioAdapter
-                    println(listaUsuarios)
-                } catch (e: Exception) {
-                    // Manejar errores
-                    e.printStackTrace()
-                }
-            }
         }
     }
 }
