@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ClientPostProductosElaborados {
     fun makePostProductosElaborados():PostProductoElaborado{
         return Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:3000/")
+            .baseUrl("https://noha.cl/app/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(PostProductoElaborado::class.java)
     }

@@ -51,7 +51,7 @@ class Ingredientes : AppCompatActivity() {
 
 
                 // Configurar el RecyclerView
-                recyclerView = findViewById(R.id.recyclerViewMateriasPrimas)
+                recyclerView = findViewById(R.id.recyclerViewIngredientes)
                 recyclerView.layoutManager = LinearLayoutManager(activityContext)
 
                 // Usar el adaptador personalizado

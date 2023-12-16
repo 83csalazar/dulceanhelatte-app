@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ClientPostUsuario {
     fun makePostUsuario(): PostUsuario {
         return Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:3000/")
+            .baseUrl("https://noha.cl/app/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(PostUsuario::class.java)
     }

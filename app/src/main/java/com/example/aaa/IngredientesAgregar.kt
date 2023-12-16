@@ -12,11 +12,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 
+
 import com.example.aaa.API.Data.CodigoUnidades.GET.AllCodigoUnidades.ClientAllCodigoUnidades
 import com.example.aaa.API.Data.MateriasPrimas.POST.ClientPostMateriaPrima
 import com.example.aaa.API.Data.MateriasPrimas.POST.ListPostMateriasPrimas
 
 import com.example.aaa.API.FuncionesApi.DataHolder.idCodigoUnidad
+import com.example.aaa.MyViewModel.MiViewModel
 
 import kotlinx.coroutines.launch
 
@@ -31,6 +33,8 @@ class IngredientesAgregar : AppCompatActivity() {
     private lateinit var nombresUnidades: List<String>
     private lateinit var arrayAdapter: ArrayAdapter<String>
     private lateinit var idUnidades: List<*>
+    private var unidadSeleccionada: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ingredientes_agregar)
@@ -40,26 +44,17 @@ class IngredientesAgregar : AppCompatActivity() {
         //editTextRutUsuario = findViewById(R.id.editTextRutUsuario)
         // Inicializa más variables según sea necesario para otras propiedades
         nombreIngredientesAgregar = findViewById(R.id.nombreIngredienteAgregar)
+        existenciaAgregar=findViewById(R.id.existenciaAgregar)
 
+        val existenciaEditText = findViewById<EditText>(R.id.existenciaAgregar)
+        val existenciaString = existenciaEditText.text.toString()
+
+// Convierte el valor de Existencia a un número entero
 
         //botonAgregar.setOnClickListener {
         // Muestra el formulario cuando se hace clic en el botón "Agregar"
         //formularioUsuarios.visibility = View.VISIBLE
 
-
-
-            // Guarda la información cuando se hace clic en el botón "Guardar"
-        //val nombreIngrediente = nombreIngredientesAgregar.text.toString()
-        //val existenciaActual = existenciaAgregar.text.toString()
-        //val tipoMedicion = tipoMedicionAgregar.text.toString()
-            // Obtiene más información según sea necesario para otras propiedades
-
-            // Aquí debes manejar la lógica para almacenar la información, por ejemplo, a través de una llamada a la API o en una base de datos local
-            // ...
-
-            // Limpia las entradas del formulario
-            // limpiarFormulario()
-            // Obtiene la lista de nombres desde el archivo de recursos
 
         val serviceAllCodigoUnidades = ClientAllCodigoUnidades.makeAllCodigoUnidades()
         val activityContext = this
@@ -68,11 +63,10 @@ class IngredientesAgregar : AppCompatActivity() {
 
 
         val codUnidad=idCodigoUnidad
-            // Oculta el formulario después de guardar la información
-            //formularioUsuarios.visibility = View.GONE
+
         lifecycleScope.launch {
             try {
-                    // Realizar la llamada a la API para obtener la lista de unidades
+
                 val consultaAllCodigoUnidades = serviceAllCodigoUnidades.listAllCodigoUnidades()
                 val listaTodasUnidades: List<com.example.aaa.API.Data.CodigoUnidades.GET.Model.Lista> = consultaAllCodigoUnidades.lista
                 println(listaTodasUnidades)
@@ -94,7 +88,7 @@ class IngredientesAgregar : AppCompatActivity() {
                     // Asociar el adaptador con el Spinner
                 spinner.adapter = arrayAdapter
                 Log.d("Spinner", "Tamaño de la lista de nombres: ${nombresUnidades.size}")
-                val unidadSeleccionada=0
+
                     // Manejar eventos de selección si es necesario
                 spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
@@ -103,36 +97,46 @@ class IngredientesAgregar : AppCompatActivity() {
                         val unidadSeleccionada = idUnidades[position]
                             // Puedes realizar acciones basadas en la selección
                         Log.d("Spinner", "Tamaño de la lista de nombres: ${nombresUnidades.size}")
-                        println(unidadSeleccionada)
-                        botonModificar.setOnClickListener {
-                            lifecycleScope.launch {
-                                try {
-                                    // Crear un objeto Lista con los datos del nuevo usuario
-                                    val nuevaMateriaPrima = ListPostMateriasPrimas(
-                                        NombreIngredienteBodega = nombreIngredientesAgregar,
-                                        Existencia = existenciaAgregar,
-                                        CodigoUnidad = unidadSeleccionada
-                                    )
 
-                                    // Realizar la solicitud POST para crear el nuevo usuario
-                                    val resultadoPost = ClientPostMateriaPrima.createMateriaPrima(nuevaMateriaPrima)
 
-                                    // Imprimir la respuesta en la consola
-                                    //println("Respuesta de la solicitud POST: $resultadoPost")
-
-                                    // También puedes realizar cualquier otro procesamiento necesario con el resultadoPost
-                                } catch (e: Exception) {
-                                    // Manejar cualquier excepción que pueda ocurrir durante la solicitud POST
-                                    e.printStackTrace()
-                                    println("Error al realizar la solicitud POST: ${e.message}")
-                                }
-                            }
-                        }
                     }
+
 
                     override fun onNothingSelected(parentView: AdapterView<*>?) {
                             // Manejar el caso en que no se ha seleccionado nada
                     }
+                }
+                botonModificar.setOnClickListener {
+
+                    lifecycleScope.launch {
+                        try {
+
+
+                            // Crear un objeto Lista con los datos del nuevo usuario
+                            val nuevaMateriaPrima = ListPostMateriasPrimas(
+
+                                NombreIngredienteBodega = nombreIngredientesAgregar.toString(),
+                                Existencia = existenciaAgregar.text.toString().toInt(),
+                                CodigoUnidad = unidadSeleccionada.toInt()
+                            )
+
+
+                            // Realizar la solicitud POST para crear el nuevo usuario
+                            println(nuevaMateriaPrima)
+                            val resultadoPost = ClientPostMateriaPrima.createMateriaPrima(nuevaMateriaPrima)
+                            println(resultadoPost)
+
+                        } catch (e: Exception) {
+                            // Manejar cualquier excepción que pueda ocurrir durante la solicitud POST
+                            e.printStackTrace()
+                            println("Error al realizar la solicitud POST: ${e.message}")
+                        }
+                    }
+
+                    Toast.makeText(this@IngredientesAgregar, "Se agregó Ingrediente", Toast.LENGTH_SHORT).show()
+                   limpiarFormulario()
+
+
                 }
 
                     // Resto del código...
@@ -151,8 +155,8 @@ class IngredientesAgregar : AppCompatActivity() {
 
     private fun limpiarFormulario() {
         // Limpia las entradas del formulario
-        //editTextNombreUsuario.text.clear()
-        // editTextRutUsuario.text.clear()
+        nombreIngredientesAgregar.text.clear()
+        existenciaAgregar.text.clear()
         // Limpia más entradas según sea necesario para otras propiedades
     }
 }

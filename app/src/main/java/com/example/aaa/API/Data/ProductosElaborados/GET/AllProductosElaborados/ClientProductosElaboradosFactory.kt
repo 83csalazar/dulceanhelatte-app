@@ -7,7 +7,7 @@ object ClientProductosElaboradosFactory {
 
     fun makeProductosElaborados(): ConsumirApiAllProductosElaborados {
         return Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:3000/")
+            .baseUrl("https://noha.cl/app/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(ConsumirApiAllProductosElaborados::class.java)
     }

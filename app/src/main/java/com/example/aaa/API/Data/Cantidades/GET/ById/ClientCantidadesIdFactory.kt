@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ClientCantidadesIdFactory {
     fun makeCantidadesId(): com.example.aaa.API.Data.Cantidades.GET.ById.ConsumirApiCantidadesId {
         return Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:3000/")
+            .baseUrl("https://noha.cl/app/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(com.example.aaa.API.Data.Cantidades.GET.ById.ConsumirApiCantidadesId::class.java)
     }
