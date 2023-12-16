@@ -1,5 +1,6 @@
 package com.example.aaa
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -7,14 +8,25 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
+import com.example.aaa.API.Data.MateriasPrimas.GET.AllMateriasPrimas.ClientAllMateriasPrimas
+import com.example.aaa.API.Data.MateriasPrimas.GET.AllMateriasPrimas.ConsumirApiAllMateriasPrimas
+import com.example.aaa.API.Data.MateriasPrimas.GET.ById.ClientMateriasPrimasIdFactory
+import com.example.aaa.API.Data.MateriasPrimas.GET.ById.ConsumirApiMateriasPrimasId
+import com.example.aaa.API.Data.MateriasPrimas.GET.Model.Lista
+import com.example.aaa.API.FuncionesApi.MateriasPrimasAdapter
+import kotlinx.coroutines.launch
 
 class Ingredientes : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     //-private lateinit var ingredienteAdapter: IngredienteAdapter // Ajusta el nombre del adaptador según tu implementación
 
+    private lateinit var materiasPrimasAdapter: MateriasPrimasAdapter
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ingredientes)
@@ -27,17 +39,35 @@ class Ingredientes : AppCompatActivity() {
         val smallButtonImageView = findViewById<ImageView>(R.id.id_notificaciones)
 
         // Configura el RecyclerView
-        recyclerView = findViewById(R.id.recyclerViewIngredientes)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-       //- ingredienteAdapter = IngredienteAdapter() // Ajusta el nombre del adaptador según tu implementación
-        //-recyclerView.adapter = ingredienteAdapter
+
+        val serviceAllMateriasPrimas=ClientAllMateriasPrimas.makeAllMateriasPrimas()
+        val activityContext = this
+
+        lifecycleScope.launch {
+            try {
+                // Aquí proporciona el valor que deseas para Id_Codigo
+                val consultaAllMateriasPrimas=serviceAllMateriasPrimas.listAllMateriasPrimas()
+                val listaMateriasPrimas:List<Lista> = consultaAllMateriasPrimas.lista
+
+
+                // Configurar el RecyclerView
+                recyclerView = findViewById(R.id.recyclerViewIngredientes)
+                recyclerView.layoutManager = LinearLayoutManager(activityContext)
+
+                // Usar el adaptador personalizado
+                materiasPrimasAdapter = MateriasPrimasAdapter(listaMateriasPrimas)
+                recyclerView.adapter = materiasPrimasAdapter
+
+            } catch (e: Exception) {
+                // Manejar errores
+                e.printStackTrace()
+            }
+        }
 
         // Configura el botón Agregar
         botonAgregar.setOnClickListener {
-            // Aquí debes implementar la lógica para agregar un ingrediente a la base de datos
-            // Luego, actualiza el RecyclerView
-            // Por ejemplo:
-            // ingredienteAdapter.agregarIngrediente(nuevoIngrediente)
+            val intent = Intent(this, IngredientesAgregar::class.java)
+            startActivity(intent)
         }
 
         // Configura el botón Eliminar

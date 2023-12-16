@@ -7,15 +7,21 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.example.aaa.API.Data.Usuarios.Service.Get.Model.Lista
+import com.example.aaa.API.FuncionesApi.UsuarioAdapter
+import com.example.myapplication.Data.Service.AllUsuarios.ClientAllUsuariosFactory
+import kotlinx.coroutines.launch
 
 class Usuarios : AppCompatActivity() {
 
     //-private val databaseHelper: DatabaseHelper = DatabaseHelper(this)
     //-private lateinit var recyclerView: RecyclerView
     //-private lateinit var usuarioAdapter: UsuarioAdapter // Ajusta el nombre del adaptador según tu implementación
-
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var usuarioAdapter: UsuarioAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_usuarios)
 
@@ -26,11 +32,23 @@ class Usuarios : AppCompatActivity() {
         val btnhome = findViewById<View>(R.id.buttonHome)
         val smallButtonImageView = findViewById<ImageView>(R.id.id_notificaciones)
 
-        // Configura el RecyclerView
-        //recyclerView = findViewById(R.id.recyclerViewUsuarios)
-        //recyclerView.layoutManager = LinearLayoutManager(this)
-        //usuarioAdapter = UsuarioAdapter() // Ajusta el nombre del adaptador según tu implementación
-        //recyclerView.adapter = usuarioAdapter
+        val serviceAllUsuarios = ClientAllUsuariosFactory.makeClienteAllUsuarios()
+        val activityContext = this
+        lifecycleScope.launch {
+            try {
+                val consultaAllUsers = serviceAllUsuarios.listAllUsuarios()
+                val listaUsuarios: List<Lista> = consultaAllUsers.lista
+
+                recyclerView = findViewById(R.id.recyclerViewUsuarios)
+                recyclerView.layoutManager = LinearLayoutManager(activityContext)
+                usuarioAdapter = UsuarioAdapter(listaUsuarios)
+                recyclerView.adapter = usuarioAdapter
+                println(listaUsuarios)
+            } catch (e: Exception) {
+                // Manejar errores
+                e.printStackTrace()
+            }
+        }
 
         // Configura el botón Agregar
         botonAgregar.setOnClickListener {
@@ -52,11 +70,7 @@ class Usuarios : AppCompatActivity() {
 
         // Configura el botón Modificar
         botonModificar.setOnClickListener {
-            // Aquí debes implementar la lógica para modificar un usuario en la base de datos
-            // Luego, actualiza el RecyclerView
-            // Por ejemplo:
-            // databaseHelper.modificarUsuario(usuarioModificado)
-            // usuarioAdapter.actualizarDatos(databaseHelper.obtenerTodosLosUsuarios())
+
         }
     }
 }

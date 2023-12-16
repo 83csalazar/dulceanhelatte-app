@@ -5,8 +5,13 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.aaa.API.Data.Recetas.GET.AllRecetas.ClientAllRecetasFactory
+import com.example.aaa.API.Data.Recetas.GET.Model.Lista
+import com.example.aaa.API.FuncionesApi.RecetasAdapter
+import kotlinx.coroutines.launch
 
 class Recetas : AppCompatActivity() {
 
@@ -14,7 +19,8 @@ class Recetas : AppCompatActivity() {
     //-private val databaseHelper: DatabaseHelper = DatabaseHelper(this)
     //-private lateinit var recyclerView: RecyclerView
     //-private lateinit var recetaAdapter: RecetaAdapter // Ajusta el nombre del adaptador según tu implementación
-
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var recetasAdapter: RecetasAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recetas)
@@ -31,7 +37,22 @@ class Recetas : AppCompatActivity() {
         //-recyclerView.layoutManager = LinearLayoutManager(this)
         //-recetaAdapter = RecetaAdapter() // Ajusta el nombre del adaptador según tu implementación
         //-recyclerView.adapter = recetaAdapter
+        val serviceAllRecetas = ClientAllRecetasFactory.makeAllRecetas()
+        val activityContext = this
+        lifecycleScope.launch {
+            try {
+                val consultaAllRecetas = serviceAllRecetas.listAllRecetas()
+                val listaRecetas: List<Lista> = consultaAllRecetas.lista
 
+                recyclerView = findViewById(R.id.recyclerViewRecetas)
+                recyclerView.layoutManager = LinearLayoutManager(activityContext)
+                recetasAdapter = RecetasAdapter(listaRecetas)
+                recyclerView.adapter = recetasAdapter
+            } catch (e: Exception) {
+                // Manejar errores
+                e.printStackTrace()
+            }
+        }
         // Configura el botón Agregar
         botonAgregar.setOnClickListener {
             // Aquí debes implementar la lógica para agregar una receta a la base de datos
@@ -52,11 +73,11 @@ class Recetas : AppCompatActivity() {
 
         // Configura el botón Modificar
         botonModificar.setOnClickListener {
-            // Aquí debes implementar la lógica para modificar una receta en la base de datos
-            // Luego, actualiza el RecyclerView
-            // Por ejemplo:
-            // databaseHelper.modificarReceta(recetaModificada)
-            // recetaAdapter.actualizarDatos(databaseHelper.obtenerTodasLasRecetas())
+            // RecetasActivity.kt
+
+
+
+
         }
     }
 }

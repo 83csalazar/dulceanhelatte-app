@@ -12,52 +12,70 @@
         android:id="@+id/parte1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
-        android:background="@color/grey"
-        android:orientation="vertical"
+        app:layout_constraintHeight_percent="0.3"
+        android:background="@color/griscalido"
+        android:padding="20dp"
+        android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/parte2">
 
         <!-- ImageView para el logo de la empresa -->
-        <ImageView
-            android:id="@+id/id_notificaciones"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/campanaencendida"
-            tools:srcCompat="@drawable/campanaencendida" />
 
+
+        <!-- Título y subtitulo -->
         <ImageView
             android:id="@+id/id_Logo"
-            android:layout_width="143dp"
-            android:layout_height="112dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
             android:scaleType="fitCenter"
             android:src="@drawable/logo" />
 
-        <!-- Título y subtitulo -->
-        <TextView
-            android:id="@+id/id_Titulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Menu princial"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="fill_horizontal">
 
-        <TextView
-            android:id="@+id/id_Subtítulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="¿Que haremos hoy ?"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            <ImageView
+                android:id="@+id/id_notificaciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@drawable/campanaencendida"
+                tools:srcCompat="@drawable/campanaencendida" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="bottom">
+
+                <TextView
+                    android:id="@+id/id_Titulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Menu princial"
+                    android:textAlignment="textEnd"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/id_Subtítulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:text="¿Que haremos hoy ?"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
 
         <!-- Imagen botón pequeño en la parte superior derecha -->
     </LinearLayout>
@@ -67,7 +85,6 @@
         android:id="@+id/parte2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
         android:background="@color/white"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/parte1"
@@ -83,30 +100,35 @@
             >
 
             <!-- Primeros 3 botones -->
-            <!-- Ajusta los recursos y textos según tus necesidades -->
             <ImageButton
                 android:id="@+id/buttonFactura"
+                android:layout_margin="10dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#00FFFFFF"
                 android:scaleType="fitCenter"
                 android:src="@drawable/btnfactura"
                 tools:srcCompat="@drawable/btnfactura" />
 
             <ImageButton
                 android:id="@+id/buttonIgredienntes"
+                android:layout_margin="10dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#00FFFFFF"
                 android:scaleType="fitCenter"
                 android:src="@drawable/btningredientes"
                 tools:srcCompat="@drawable/btningredientes" />
 
             <ImageButton
                 android:id="@+id/buttonInventario"
+                android:layout_margin="10dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#00FFFFFF"
                 android:scaleType="fitCenter"
                 android:src="@drawable/btninventario"
                 tools:srcCompat="@drawable/btninventario" />
@@ -122,27 +144,33 @@
 
             <ImageButton
                 android:id="@+id/buttonUsuario"
+                android:layout_margin="10dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#00FFFFFF"
                 android:scaleType="fitCenter"
                 android:src="@drawable/btnusuario"
                 tools:srcCompat="@drawable/btnusuario" />
 
             <ImageButton
                 android:id="@+id/buttonRecetas"
+                android:layout_margin="10dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#00FFFFFF"
                 android:scaleType="fitCenter"
                 android:src="@drawable/btnrecetas"
                 tools:srcCompat="@drawable/btnrecetas" />
 
             <ImageButton
                 android:id="@+id/buttonValance"
+                android:layout_margin="10dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#00FFFFFF"
                 android:scaleType="fitCenter"
                 android:src="@drawable/btnreportes"
                 tools:srcCompat="@drawable/btnreportes" />
@@ -152,21 +180,25 @@
     <!-- Parte 3 - 20% de la pantalla con fondo gris y un botón en el centro -->
     <LinearLayout
         android:id="@+id/parte3"
-        android:layout_width="413dp"
-        android:layout_height="156dp"
-        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.2"
         android:background="#E67A00"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/parte2"
-        tools:layout_editor_absoluteX="-2dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/parte2">
 
         <!-- Botón en el centro -->
         <!-- Ajusta el recurso según tus necesidades -->
         <ImageButton
             android:id="@+id/buttonHome"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
             android:scaleType="fitCenter"
             android:src="@drawable/btnhome"
             tools:srcCompat="@drawable/btnhome" />

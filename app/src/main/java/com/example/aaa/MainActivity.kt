@@ -16,10 +16,10 @@ class MainActivity : AppCompatActivity() {
         val usernameEditText: EditText = findViewById(R.id.usernameEditText)
         val passwordEditText: EditText = findViewById(R.id.passwordEditText)
         val loginButton: Button = findViewById(R.id.loginButton)
-        val exitButton: Button = findViewById(R.id.exitButton)
+       // val exitButton: Button = findViewById(R.id.exitButton)
 
-        val correctUsername = "marcela"
-        val correctPassword = "123"
+        val correctUsername = "Marcela"
+        val correctPassword = "123456"
 
         loginButton.setOnClickListener {
             val enteredUsername = usernameEditText.text.toString()
@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        exitButton.setOnClickListener {
+      /*  exitButton.setOnClickListener {
             finish() // Cierra la aplicación al hacer clic en el botón "Salir"
-        }
+        }*/
     }
 }
